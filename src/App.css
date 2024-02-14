@@ -1,32 +1,378 @@
 .App {
   text-align: center;
+  
 }
 
-.App-logo {
-  height: 40vmin;
+.App button {
+  padding: 10px;
+  margin: 2px;
+  border-radius: 8px;
+  width: 100px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: large;
+}
+
+.profile-container {
+  background-color: white;
+  width: 95%;
+  margin: auto;
+  height: 270px;
+  padding-bottom: 10px;
+  border-radius: 15px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+  opacity: 0;
   pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.container {
+  font-family: Arial, sans-serif;
+  background-color: #c0c0c0;
+  width: 95%;
+  margin: 0 60px;
+  /* Padding for top and bottom spacing */
+  padding: 25px 0 7px 0;
+  height: 680px;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  bottom: -2px;
+  position: fixed; /* or position: absolute; depending on your preference */
+  bottom: 0;
+  transition: transform 0.3s ease-in-out;
+  transform: translateY(100%);
+  z-index: 100;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container.visible {
+  transform: translateY(0);
+}
+
+.overlay.visible {
+  opacity: 1;
+}
+
+.secondary-container {
+  margin: 0 auto;
+  width: 95%;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.profile-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.profile-name {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.post-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.post-option {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.post-option:last-child {
+  margin-right: 0;
+}
+
+.post-option-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.post-option-text {
+  font-size: 16px;
+}
+
+.post-caption {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.post-caption-input {
+  width: 100%;
+  height: 40px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  padding: 10px;
+  color: #333;
+  background-color: #f0f0f0;
+}
+
+.post-caption-input::placeholder {
+  color: #999;
+}
+
+.post-button {
+  width: 20%;
+  display: block;
+  height: 60px;
+  margin: 20px 20px;
+  border-radius: 15px;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  cursor: pointer;
+  float: right;
+
+}
+
+.messenger-option {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+}
+
+.messenger-option-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+
+
+.messenger-option-contacts {
+  display: flex;
+  overflow-x: auto;
+}
+
+.messenger-option-contact {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 80px;
+  margin-right: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.messenger-option-contact:last-child {
+  margin-right: 0;
 }
+
+.messenger-option-contact-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-bottom: 5px;
+}
+
+.messenger-option-contact-name {
+  font-size: 14px;
+  text-align: center;
+}
+
+.share-options {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.share-option {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+.share-option:nth-child(odd) {
+  border-right: none;
+}
+
+.share-option:nth-last-child(-n+2) {
+  border-bottom: none;
+}
+
+.share-option-icon {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  border-radius: 100%;
+  background-color: #999;
+}
+
+.share-option-text {
+  font-size: 16px;
+}
+
+/* Component2 styles*/
+
+.chat-container {
+  background-color: white;
+  width: 95%;
+  margin: auto;
+  height: 300px;
+  padding-bottom: 10px;
+}
+
+.chat-container .post-header {
+  padding: 10px;
+  background-color: #ffffff;
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.chat-container ul {
+  margin: auto;
+}
+
+.chat-container li {
+  color: #007bff;
+  list-style: none;
+  display: inline-block;
+  font-weight: bold;
+  color: #007bff;
+  margin: auto;
+  font-size: 20px;
+  padding-top: 10px;
+
+}
+
+.chat-container .send {
+  position: absolute;
+  left: 100px;
+}
+
+.chat-container .post-page {
+  padding: 10px;
+  background-color: #fff;
+}
+
+.chat-container .post {
+  display: flex;
+  align-items: center;
+  margin-bottom: -2px;
+}
+
+.chat-container img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin: 0px 32px;
+}
+
+.chat-container .write img {
+  width: 45px;
+  height: 45px;
+}
+
+.chat-container .post-text {
+  background-color: #e5e5ea;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.chat-container .name {
+  font-size: 18px;
+  margin-left: 100px;
+}
+
+.chat-container .write {
+  display: flex;
+  padding: 10px;
+}
+
+.chat-container .write p {
+  padding: 0,20px;
+  font-size: 30px;
+}
+
+.chat-container .post-bottom {
+  padding: 10px;
+  width: auto;
+}
+
+.chat-container .post-bottom input {
+  display: block;
+  width: 95%;
+  margin: auto;
+  height: 50px;
+  padding: 10px;
+  border: 1px solid #ffffff00;
+  background-color: #e4e4e4;
+  border-radius: 15px;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.chat-container .userinfo {
+  padding: 10px;
+  width: auto;
+  background-color: #fff;
+}
+
+.chat-container .users {
+  display: flex;
+  padding: 20px;
+  align-items: center;
+
+}
+
+.chat-container .users p {
+  padding: 0,20px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.chat-container .users button {
+  font-size: 17px;
+  margin-right: 0px;
+  padding: 10px 20px;
+  border-radius: 7px;
+  border: none;
+  background-color: #b8dae2;
+  color: #2f84bc;
+  font-weight: 600;
+  position: absolute;
+  right: 105px;
+
+}
+
+
 
 @keyframes App-logo-spin {
   from {
